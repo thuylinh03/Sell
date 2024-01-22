@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,
+    initial-scale=1"
+    />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/static/css/signup.css}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main-box">
+        <h1>Register</h1>
+        <form
+          th:action="@{/signup}"
+          th:object="${user}"
+          method="post"
+          id="signup-form"
+        >
+          <div class="input-box">
+            <span class="icon"><i class="bx bxs-user-account"></i></span>
+            <input type="text" th:field="*{name}" name="name" required />
+            <label>Name</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><i class="bx bxs-envelope"></i></span>
+            <input type="email" th:field="*{email}" name="email" required />
+            <label>Email</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><i class="bx bxs-user-account"></i></span>
+            <input type="text" name="username" required />
+            <label>Usename</label>
+          </div>
+          <div class="input-box">
+            <span class="icon"><i class="bx bxs-lock-alt"></i></span>
+            <input type="password" id="password" name="password" required />
+            <label>Password</label>
+            <p>
+              <span
+                id="passError"
+                class="error"
+                style="color: rgb(255, 0, 0); font-size: 15px"
+              ></span>
+            </p>
+          </div>
+          <p style="font-size: 12px; margin-top: 50px">
+            By clicking Register, you agree on our
+            <a href="#">terms and condition</a>.
+          </p>
+          <button type="submit" class="btn">Signup</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+    var form = document.getElementById("signup-form");
+    var pass = document.getElementById("password");
+    var passError = document.getElementById("passError");
+
+    // function validationRegisterForm(){
+    //   var password = document.getElementById("password");
+    //   var passError = document.getElementById('passError');
+
+    //   passError.textContent="";
+    //   if(password.length<6){
+    //     passError.textContent="Mật khẩu tối thiểu 6 ký tự.";
+    //     return false;
+    //   }
+    //   var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+    //   if(!regex.test(password)){
+    //     passError.textContent="Mật khẩu phải bao gồm ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số.";
+    //     return false;
+    //   }
+    //   return true;
+    // }
+
+    // function submitForm(){
+    //   if(validationRegisterForm()){
+    //     document.getElementById("singup-form").submit();
+    //   }
+    // }
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var password = pass.value;
+      passError.textContent = "";
+      if (password.length < 6) {
+        passError.textContent = "Mật khẩu tối thiểu 6 ký tự.";
+        return false;
+      }
+      var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+      if (!regex.test(password)) {
+        passError.textContent =
+          "Mật khẩu phải bao gồm ít nhất một chữ cái viết hoa, một chữ cái viết thường và một số.";
+        return false;
+      }
+      form.submit(); // Submit the form if validation passes
+    });
+  </script>
+</html>
