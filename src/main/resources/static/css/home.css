@@ -1,0 +1,619 @@
+header {
+    position: fixed;
+    width: 100%;
+    /* Tuỳ chỉnh màu nền của header */
+    z-index: 1000;
+    /* Đặt z-index để đảm bảo header hiển thị trên cùng của các phần tử khác */
+    margin-left: 150px;
+    margin-top: 30px;
+    display: inline-flex;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+}
+
+header .div {
+    background-color: aqua;
+}
+
+.slider {
+    width: 1300px;
+    max-width: 100vw;
+    height: 700px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    z-index: 500;
+}
+
+.slider .list {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    transition: 1s;
+}
+
+.slider .list img {
+    width: 1300px;
+    max-width: 100vw;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slider .buttons {
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slider .buttons button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff5;
+    color: #fff;
+    border: none;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.slider .dots {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    color: #fff;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.slider .dots li {
+    list-style: none;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    margin: 10px;
+    border-radius: 20px;
+    transition: 0.5s;
+}
+
+.slider .dots li.active {
+    width: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .slider {
+        height: 400px;
+    }
+}
+
+.logo img {
+    width: 150px;
+    height: 100px;
+}
+
+.logo {
+    display: flex;
+}
+
+.nav {
+    margin-left: 100px;
+}
+
+.nav a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: antiquewhite;
+    justify-content: space-between;
+    padding: 14px 50px;
+    font-family: 'Edu TAS Beginner', cursive;
+}
+
+#btn-search {
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+#btn-search input {
+    width: 1250px;
+    height: 20px;
+}
+
+#btn-search button {
+    height: 25px;
+}
+
+#btn-search button:hover {
+    color: antiquewhite;
+}
+
+.container-between {
+    margin-top: 30px;
+    margin-left: 80px;
+}
+
+.container-between-left img {
+    width: 600px;
+    height: 500px;
+}
+
+.container-between-right img {
+    width: 340px;
+    height: 248px;
+}
+
+.container-between-left {
+    float: left;
+}
+
+.container-between-right {
+    float: left;
+    margin-left: 10px;
+}
+
+.container-between-right-top-1 {
+    float: left;
+}
+
+.container-between-right-top-2 {
+    float: left;
+    margin-left: 7px;
+}
+
+.container-between-right-bottom-1 {
+    float: left;
+}
+
+.container-between-right-bottom-2 {
+    float: left;
+    margin-left: 7px;
+}
+
+.container-between-left {
+    transition: transform 0.1s ease-in-out;
+}
+
+.container-between-left:hover img {
+    transform: scale(1.1);
+    border-radius: 25px 25px 25px 25px;
+    cursor: pointer;
+}
+
+.container-between-right-top-1 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.container-between-right-top-1:hover img {
+    transform: scale(1.1);
+    border-radius: 25px 25px 25px 25px;
+    cursor: pointer;
+}
+
+.container-between-right-top-2 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.container-between-right-top-2:hover img {
+    transform: scale(1.1);
+    border-radius: 25px 25px 25px 25px;
+    cursor: pointer;
+}
+
+.container-between-right-bottom-1 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.container-between-right-bottom-1:hover img {
+    transform: scale(1.1);
+    border-radius: 25px 25px 25px 25px;
+    cursor: pointer;
+}
+
+.container-between-right-bottom-2 {
+    transition: transform 0.3s ease-in-out;
+}
+
+.container-between-right-bottom-2:hover img {
+    transform: scale(1.1);
+    border-radius: 25px 25px 25px 25px;
+    cursor: pointer;
+}
+
+.container-sell {
+    /* border: 1px solid black; */
+    width: 89%;
+    height: 800px;
+    margin-top: 550px;
+    margin-left: 80px;
+}
+
+.container-sell p {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.container-sell i {
+    color: gray;
+}
+
+.container-sell span {
+    color: gray;
+}
+
+.container-sell b {
+    font-size: 25px;
+}
+
+.container-watch a {
+    text-decoration: none;
+}
+
+.item1 {
+    border: 1px solid gray;
+    width: 300px;
+    height: 320px;
+}
+
+.item1 img {
+    width: 300px;
+    height: 200px;
+    /* border-radius: 25px 25px 25px 25px; */
+}
+
+.item1 p {
+    line-height: 2px;
+    margin-left: 15px;
+}
+
+.money {
+    color: red;
+}
+
+.money p {
+    margin-left: 180px;
+    margin-top: 40px;
+}
+
+.name {
+    float: left;
+}
+
+.icon {
+    float: left;
+    margin-left: 150px;
+    margin-top: 10px
+}
+
+.btn-add-see {
+    margin-top: 10px;
+}
+
+.btn-add {
+    float: left;
+    margin-left: 10px;
+}
+
+.btn-add-see button {
+    height: 30px;
+}
+
+.btn-add:hover button {
+    background-color: #294B29;
+    color: #fff;
+}
+
+.btn-see {
+    float: left;
+    margin-left: 55px;
+}
+
+.btn-see:hover button {
+    background-color: #FF9843;
+    color: #fff;
+}
+
+.container-watch-item1 {
+    float: left;
+    margin-left: 30px;
+}
+
+.container-watch-item2 {
+    float: left;
+    margin-left: 15px;
+}
+
+.container-watch-item3 {
+    float: left;
+    margin-left: 15px;
+}
+
+.container-watch-item4 {
+    float: left;
+    margin-left: 15px;
+}
+
+.container-watch-item-bottom {
+    /* border: 3px solid black; */
+    width: 100%;
+    height: 350px;
+    margin-top: 400px;
+}
+
+
+/* .container-watch h2 {
+    margin-top: 20px;
+    margin-left: 350px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+} */
+
+
+/* Import Google font - Poppins */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+} */
+
+
+/* .card {
+    border: 1px solid black;
+    width: 100px;
+    height: 200px;
+} */
+
+
+/* .comment {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 25px;
+    text-align: center;
+    background-color: aquamarine;
+    border-radius: 100px 100px 100px 100px;
+    width: 250px;
+    margin-left: 80px;
+} */
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    width: 89%;
+    /* background: linear-gradient(to left top, #031A9A, #8B53FF); */
+    margin-left: 80px;
+    background-color: #FFCF81;
+    margin-top: 50px;
+}
+
+.wrapper {
+    max-width: 1100px;
+    width: 90%;
+    position: relative;
+}
+
+.wrapper i {
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    font-size: 1.25rem;
+    position: absolute;
+    text-align: center;
+    line-height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+    transform: translateY(-50%);
+    transition: transform 0.1s linear;
+}
+
+.wrapper i:active {
+    transform: translateY(-50%) scale(0.85);
+}
+
+.wrapper i:first-child {
+    left: -22px;
+}
+
+.wrapper i:last-child {
+    right: -22px;
+}
+
+.wrapper .carousel {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% / 3) - 12px);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    border-radius: 8px;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel.no-transition {
+    scroll-behavior: auto;
+}
+
+.carousel.dragging {
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+}
+
+.carousel.dragging .card {
+    cursor: grab;
+    user-select: none;
+}
+
+.carousel :where(.card,
+.img) {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel .card {
+    scroll-snap-align: start;
+    height: 342px;
+    list-style: none;
+    background: #fff;
+    cursor: pointer;
+    padding-bottom: 15px;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+.carousel .card .img {
+    background: #8B53FF;
+    height: 148px;
+    width: 148px;
+    border-radius: 50%;
+}
+
+.card .img {
+    border: 1px solid #8B53FF;
+    width: 100px;
+    height: 100px;
+    margin-left: 100px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.card .img img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #8B53FF;
+}
+
+.carousel .card h2 {
+    font-weight: 500;
+    font-size: 1.56rem;
+    margin: 30px 0 5px;
+}
+
+.carousel .card span {
+    color: #6A6D78;
+    font-size: 1.31rem;
+}
+
+@media screen and (max-width: 900px) {
+    .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper .carousel {
+        grid-auto-columns: 100%;
+    }
+}
+
+.question {
+    /* border: 1px solid black; */
+    width: 89%;
+    margin-left: 80px;
+    height: 400px;
+    margin-top: 100px;
+    background-color: #DCF2F1;
+}
+
+.question-left {
+    /* border: 1px solid black; */
+    width: 50%;
+    height: 400px;
+    /* margin-left: 30px; */
+    float: left;
+}
+
+.question-left p {
+    line-height: 1.0;
+    margin-left: 25px;
+}
+
+.question-left b {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 35px;
+}
+
+.question-left span {
+    color: #6A6D78;
+    margin-left: 100px;
+}
+
+.name1 input {
+    width: 300px;
+    height: 30px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.sdt input {
+    width: 250px;
+    height: 30px;
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.email input {
+    width: 89%;
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.comment input {
+    width: 89%;
+    height: 60px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.btn-select p {
+    margin-top: 20px;
+    margin-left: 20px;
+    float: left;
+}
+
+.btn-select:hover button {
+    background-color: #294B29;
+    color: #fff;
+}
+
+.btn-submit button {
+    margin-top: 25px;
+    margin-left: 500px;
+    float: left;
+}
+
+.btn-submit:hover button {
+    background-color: #FF9843;
+    color: #2a2338;
+}
+
+.question-right {
+    float: left;
+    /* margin-left: 30px; */
+}
+
+.question-right img {
+    width: 645px;
+    height: 400px;
+}
