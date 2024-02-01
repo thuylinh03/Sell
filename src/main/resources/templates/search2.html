@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="/static/css/search.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <title>Nội thất</title>
+    <script>
+        function findProduct() {
+            let keywordInput = document.querySelector(".input100");
+            let keyword = keywordInput.value;
+            window.location = "/search?keyword=" + keyword;
+            // window.location.href = /*[[@{'/search2/' + login.id + '?keyword=' + keyword}]]*/'';
+        }
+    </script>
+</head>
+<body>
+    <section class="page1">
+        <nav class="navbar container">
+          <a th:href="@{/home2/{id}(id=${login.id})}">
+            <img th:src="@{/static/img/home/ho.png}" alt="" />
+        </a>    
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="products">Products</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <ul>
+            <div class="logo">
+                <a th:href="@{/canhan/{id}(id=${login.id})}">Me</a>
+                <a th:href="@{/search2/{id}(id=${login.id})}">Search</a>
+                <a th:href="@{/gio_hang/{id}(id=${login.id})}">My Cart</a> 
+                <a th:href="@{/login}">Logout</a> <!-- Thêm đoạn này để dẫn đến trang login -->
+            </div>
+        </ul>
+        
+        </nav>
+        <div style="display: flex;">
+            <div class="text container" style="width: 500px; margin-left: 100px; margin-top: 300px;">
+                <p>Welcome to </p>
+                <h1>the store</h1>
+                <a href="#" class="btn">learn more</a>
+            </div>
+            <div class="find">
+            <div class="find" style="margin-top: 350px;">
+                <input class="input100" type="text" name="keyword" placeholder="Nhập sản phẩm tìm kiếm ..." style="font-size: 15pt;">
+                <button class="timkiem" type="button" onclick="findProduct()"></button>
+            </div>
+        </div>
+    </section>
+    <div class="title">
+        <h1>Danh sách sản phẩm</h1>
+        <hr style="color: green; height: 2px;">
+    </div>
+    <div class="ds">
+        <ul style="display: flex; flex-wrap: wrap; max-width: 100%;">
+            <li th:each="product : ${products}" style="flex-basis: 25%;">
+                <a>
+                    <div class="item" bis_skin_checked="1">
+                        <h3><a title="Sản phẩm" style="text-decoration: none; color: black;"><span th:text="${product.name}"></span></a></h3>
+                        <img th:src="@{${product.image}}" alt="img">
+                        <p class="sp_gia" style="font-weight: bold;font-size: 20px; color: black;">Giá: <span class="giakm" style="font-size: 20pt; color: red;" th:text="${product.price}"> đ</span></p>
+                        <div style="width: 150px; border: 1px solid black; margin-bottom: 20px; margin-top: 20px; margin-left: 90px; position: absolute;">
+                            <a th:href="@{/dathang/{userId}/{productId}(userId=${login.id}, productId=${product.id})}" class="xct" style="width: 100px;">Đặt hàng</a>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    
+
+    
+</body>
+</html>

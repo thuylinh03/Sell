@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/home.css}" />
+    <link
+      rel="stylesheet"
+      th:href="@{https://unpkg.com/boxicons@latest/css/boxicons.min.css}"
+    />
+    <link th:rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link
+      th:rel="preconnect"
+      th:href="@{https://fonts.gstatic.com}"
+      crossorigin
+    />
+    <link
+      th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap}"
+      rel="stylesheet"
+    />
+    <link
+      th:rel="stylesheet"
+      th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css}"
+      crossorigin
+    />
+  </head>
+  <style>
+    header {
+      position: fixed;
+      width: 100%;
+      /* Tuỳ chỉnh màu nền của header */
+      z-index: 1000;
+      /* Đặt z-index để đảm bảo header hiển thị trên cùng của các phần tử khác */
+      margin-left: 150px;
+      margin-top: 30px;
+      display: inline-flex;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    header .div {
+      background-color: aqua;
+    }
+
+    .slider {
+      width: 1300px;
+      max-width: 100vw;
+      height: 700px;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+      z-index: 500;
+    }
+
+    .slider .list {
+      position: absolute;
+      width: max-content;
+      height: 100%;
+      left: 0;
+      top: 0;
+      display: flex;
+      transition: 1s;
+    }
+
+    .slider .list img {
+      width: 1300px;
+      max-width: 100vw;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .slider .buttons {
+      position: absolute;
+      top: 45%;
+      left: 5%;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .slider .buttons button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff5;
+      color: #fff;
+      border: none;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    .slider .dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      color: #fff;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slider .dots li {
+      list-style: none;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      margin: 10px;
+      border-radius: 20px;
+      transition: 0.5s;
+    }
+
+    .slider .dots li.active {
+      width: 30px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .slider {
+        height: 400px;
+      }
+    }
+
+    .logo img {
+      width: 150px;
+      height: 100px;
+    }
+
+    .logo {
+      display: flex;
+    }
+
+    .nav {
+      margin-left: 100px;
+    }
+
+    .nav a {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      color: antiquewhite;
+      justify-content: space-between;
+      padding: 14px 50px;
+      font-family: "Edu TAS Beginner", cursive;
+    }
+
+    #btn-search {
+      margin-top: 20px;
+      margin-left: 80px;
+    }
+
+    #btn-search input {
+      width: 1250px;
+      height: 20px;
+    }
+
+    #btn-search button {
+      height: 25px;
+    }
+
+    #btn-search button:hover {
+      color: antiquewhite;
+    }
+
+    .container-between {
+      margin-top: 30px;
+      margin-left: 80px;
+    }
+
+    .container-between-left img {
+      width: 600px;
+      height: 500px;
+    }
+
+    .container-between-right img {
+      width: 340px;
+      height: 248px;
+    }
+
+    .container-between-left {
+      float: left;
+    }
+
+    .container-between-right {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .container-between-right-top-1 {
+      float: left;
+    }
+
+    .container-between-right-top-2 {
+      float: left;
+      margin-left: 7px;
+    }
+
+    .container-between-right-bottom-1 {
+      float: left;
+    }
+
+    .container-between-right-bottom-2 {
+      float: left;
+      margin-left: 7px;
+    }
+
+    .container-between-left {
+      transition: transform 0.1s ease-in-out;
+    }
+
+    .container-between-left:hover img {
+      transform: scale(1.1);
+      border-radius: 25px 25px 25px 25px;
+      cursor: pointer;
+    }
+
+    .container-between-right-top-1 {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-between-right-top-1:hover img {
+      transform: scale(1.1);
+      border-radius: 25px 25px 25px 25px;
+      cursor: pointer;
+    }
+
+    .container-between-right-top-2 {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-between-right-top-2:hover img {
+      transform: scale(1.1);
+      border-radius: 25px 25px 25px 25px;
+      cursor: pointer;
+    }
+
+    .container-between-right-bottom-1 {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-between-right-bottom-1:hover img {
+      transform: scale(1.1);
+      border-radius: 25px 25px 25px 25px;
+      cursor: pointer;
+    }
+
+    .container-between-right-bottom-2 {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .container-between-right-bottom-2:hover img {
+      transform: scale(1.1);
+      border-radius: 25px 25px 25px 25px;
+      cursor: pointer;
+    }
+
+    .container-sell {
+      /* border: 1px solid black; */
+      width: 89%;
+      height: 800px;
+      margin-top: 600px;
+      margin-left: 80px;
+    }
+
+    .container-sell p {
+      font-family: "Courier New", Courier, monospace;
+    }
+
+    .container-sell i {
+      color: gray;
+    }
+
+    .container-sell span {
+      color: gray;
+    }
+
+    .container-sell b {
+      font-size: 25px;
+    }
+
+    .container-watch a {
+      text-decoration: none;
+    }
+
+    .item1 {
+      border: 1px solid gray;
+      width: 300px;
+      height: 320px;
+    }
+
+    .item1 img {
+      width: 300px;
+      height: 200px;
+      /* border-radius: 25px 25px 25px 25px; */
+    }
+
+    .item1 p {
+      line-height: 2px;
+      margin-left: 15px;
+    }
+
+    .money {
+      color: red;
+    }
+
+    .money p {
+      margin-left: 180px;
+      margin-top: 40px;
+    }
+
+    .name {
+      float: left;
+    }
+
+    .icon {
+      float: left;
+      margin-left: 150px;
+      margin-top: 10px;
+    }
+
+    .btn-add-see {
+      margin-top: 10px;
+    }
+
+    .btn-add {
+      float: left;
+      margin-left: 10px;
+    }
+
+    .btn-add-see button {
+      height: 30px;
+    }
+
+    .btn-add:hover button {
+      background-color: #294b29;
+      color: #fff;
+    }
+
+    .btn-see {
+      float: left;
+      margin-left: 55px;
+    }
+
+    .btn-see:hover button {
+      background-color: #ff9843;
+      color: #fff;
+    }
+
+    .container-watch-item1 {
+      float: left;
+      margin-left: 30px;
+    }
+
+    .container-watch-item2 {
+      float: left;
+      margin-left: 15px;
+    }
+
+    .container-watch-item3 {
+      float: left;
+      margin-left: 15px;
+    }
+
+    .container-watch-item4 {
+      float: left;
+      margin-left: 15px;
+    }
+
+    .container-watch-item-bottom {
+      /* border: 3px solid black; */
+      width: 100%;
+      height: 350px;
+      margin-top: 400px;
+    }
+
+    /* .container-watch h2 {
+        margin-top: 20px;
+        margin-left: 350px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    } */
+
+    /* Import Google font - Poppins */
+
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
+    /* * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+    } */
+
+    /* .card {
+        border: 1px solid black;
+        width: 100px;
+        height: 200px;
+    } */
+
+    /* .comment {
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 25px;
+        text-align: center;
+        background-color: aquamarine;
+        border-radius: 100px 100px 100px 100px;
+        width: 250px;
+        margin-left: 80px;
+    } */
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50vh;
+      width: 89%;
+      /* background: linear-gradient(to left top, #031A9A, #8B53FF); */
+      margin-left: 80px;
+      background-color: #ffcf81;
+      margin-top: 50px;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      width: 90%;
+      position: relative;
+    }
+
+    .wrapper i {
+      top: 50%;
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+      font-size: 1.25rem;
+      position: absolute;
+      text-align: center;
+      line-height: 50px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+      transform: translateY(-50%);
+      transition: transform 0.1s linear;
+    }
+
+    .wrapper i:active {
+      transform: translateY(-50%) scale(0.85);
+    }
+
+    .wrapper i:first-child {
+      left: -22px;
+    }
+
+    .wrapper i:last-child {
+      right: -22px;
+    }
+
+    .wrapper .carousel {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% / 3) - 12px);
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 16px;
+      border-radius: 8px;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel.no-transition {
+      scroll-behavior: auto;
+    }
+
+    .carousel.dragging {
+      scroll-snap-type: none;
+      scroll-behavior: auto;
+    }
+
+    .carousel.dragging .card {
+      cursor: grab;
+      user-select: none;
+    }
+
+    .carousel :where(.card, .img) {
+      /* display: flex; */
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel .card {
+      scroll-snap-align: start;
+      height: 342px;
+      list-style: none;
+      background: #fff;
+      cursor: pointer;
+      padding-bottom: 15px;
+      flex-direction: column;
+      border-radius: 8px;
+    }
+
+    .carousel .card .img {
+      background: #8b53ff;
+      height: 148px;
+      width: 148px;
+      border-radius: 50%;
+    }
+
+    .card .img {
+      border: 1px solid #8b53ff;
+      width: 100px;
+      height: 100px;
+      margin-left: 100px;
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .card .img img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #8b53ff;
+    }
+
+    .carousel .card h2 {
+      font-weight: 500;
+      font-size: 1.56rem;
+      margin: 30px 0 5px;
+    }
+
+    .carousel .card span {
+      color: #6a6d78;
+      font-size: 1.31rem;
+    }
+
+    @media screen and (max-width: 900px) {
+      .wrapper .carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      .wrapper .carousel {
+        grid-auto-columns: 100%;
+      }
+    }
+
+    .question {
+      /* border: 1px solid black; */
+      width: 89%;
+      margin-left: 80px;
+      height: 400px;
+      margin-top: 100px;
+      background-color: #dcf2f1;
+    }
+
+    .question-left {
+      /* border: 1px solid black; */
+      width: 50%;
+      height: 400px;
+      /* margin-left: 30px; */
+      float: left;
+    }
+
+    .question-left p {
+      line-height: 1;
+      margin-left: 25px;
+    }
+
+    .question-left b {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 35px;
+    }
+
+    .question-left span {
+      color: #6a6d78;
+      margin-left: 100px;
+    }
+
+    .name1 input {
+      width: 300px;
+      height: 30px;
+      float: left;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .sdt input {
+      width: 250px;
+      height: 30px;
+      float: left;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .email input {
+      width: 89%;
+      height: 30px;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .comment input {
+      width: 89%;
+      height: 60px;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    .btn-select p {
+      margin-top: 20px;
+      margin-left: 20px;
+      float: left;
+    }
+
+    .btn-select:hover button {
+      background-color: #294b29;
+      color: #fff;
+    }
+
+    .btn-submit button {
+      margin-top: 25px;
+      margin-left: 500px;
+      float: left;
+    }
+
+    .btn-submit:hover button {
+      background-color: #ff9843;
+      color: #2a2338;
+    }
+
+    .question-right {
+      float: left;
+      /* margin-left: 30px; */
+    }
+
+    .question-right img {
+      width: 645px;
+      height: 400px;
+    }
+  </style>
+  <body>
+    <header id="mainHeader">
+      <div class="logo">
+        <img src="/static/img/Logoo.png" alt="" />
+      </div>
+      <nav class="nav">
+        <a href="">Home</a>
+        <a href="">About us</a>
+        <a href="products">Product</a>
+        <a th:href="@{/search2/{id}(id=${login.id})}">Search</a>
+        <a th:href="@{/canhan/{id}(id=${login.id})}">Me</a>
+        <a th:href="@{/gio_hang/{id}(id=${login.id})}">My cart</a>
+        <a th:href="@{/login}">Logout</a>
+      </nav>
+    </header>
+
+    <div class="slider" id="slider">
+      <div class="list">
+        <div class="item">
+          <img
+            src="https://www.deco-crystal.com/wp-content/uploads/2021/11/phong-cach-eco-crystaldesigntpl.jpg"
+            alt=""
+          />
+        </div>
+        <div class="item">
+          <img
+            src="https://truongthang.vn/wp-content/uploads/2023/08/goi-y-noi-that-phong-khach-rong-cho-nha-them-sang-va-dep-3.jpg"
+            alt=""
+          />
+        </div>
+        <div class="item">
+          <img
+            src="https://nadudesign.com/uploads/project/1655184633-thiet-ke-noi-that-chung-cu-matrix-one.jpg"
+            alt=""
+          />
+        </div>
+        <div class="item">
+          <img
+            src="https://cdnphoto.dantri.com.vn/jThxG8ziIO1tgq9U889CSJNHrA4=/thumb_w/1020/2023/09/23/7-tips-for-implementing-japanese-style-in-your-home-design-333-images-artfacade-edited-1695456221231.jpeg"
+            alt=""
+          />
+        </div>
+        <div class="item">
+          <img
+            src="https://www.maymainenbetong.com.vn/images/upload/tan-dung-toi-da-khong-gian-va-lua-chon-noi-that-nho-gon_1658313043.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="buttons">
+        <button id="prev"><</button>
+        <button id="next">></button>
+      </div>
+      <ul class="dots">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <div id="btn-search">
+      <input type="text" placeholder="Tìm kiếm..." />
+      <button><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+
+    <div class="container-between">
+      <div class="container-between-left">
+        <img
+          class="sofa-img"
+          src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+          alt="Sofa"
+        />
+      </div>
+      <div class="container-between-right">
+        <div class="container-between-right-top">
+          <div class="container-between-right-top-1">
+            <img
+              src="https://ankyfurni.vn/wp-content/uploads/2020/08/bo-ban-an-thong-minh-06.jpg"
+              alt="ban an"
+            />
+          </div>
+          <div class="container-between-right-top-2">
+            <img
+              src="https://hocviencaphe.vn/wp-content/uploads/2021/03/4.300-1-c%C3%A1i-Gh%E1%BA%BF-S%E1%BA%AFt-01-..jpg"
+              alt="ghe"
+            />
+          </div>
+        </div>
+        <div class="container-between-right-bottom">
+          <div class="container-between-right-bottom-1">
+            <img
+              src="https://www.nuvoitalia.co.za/cdn/shop/files/kayden-accent-armchair-wood-dark-grey-side-facing_2000x.jpg?v=1696032561"
+              alt="armchair"
+            />
+          </div>
+          <div class="container-between-right-bottom-2">
+            <img
+              src="https://bizweb.dktcdn.net/thumb/1024x1024/100/302/517/products/n-ng-b-n-hi-n-i-dbhd019-01.jpg?v=1551779709397"
+              alt="den"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <hr color="gray" width="89%" margin-top="20px"> -->
+
+    <div class="container-sell">
+      <div class="container-watch">
+        <p>
+          <b>Sản phẩm được xem nhiều nhất </b
+          ><a href="##"
+            ><span>xem thêm <i class="fa-solid fa-arrow-right"></i></span
+          ></a>
+        </p>
+      </div>
+      <div class="container-watch-item">
+        <div class="container-watch-item1">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-watch-item2">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-watch-item3">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-watch-item4">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-watch-item-bottom">
+        <div class="container-watch-item1">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-watch-item2">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-watch-item3">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-watch-item4">
+          <div class="item1">
+            <img
+              src="https://spacet-release.s3.ap-southeast-1.amazonaws.com/img/blog/2023-07-28/6-diem-giup-lua-chon-sofa-phu-hop-va-1-luu-y-quan-trong-64c37c658f7873324f965a2d.webp"
+              alt="anh 1"
+            />
+            <div class="name">
+              <p><b>Sofa da</b></p>
+            </div>
+            <div class="icon">
+              <i class="fa-regular fa-heart"></i>
+            </div>
+            <div class="money">
+              <p>20.000.000<sup>đ</sup></p>
+            </div>
+            <div class="btn-add-see">
+              <div class="btn-add">
+                <button>Thêm vào giỏ hàng</button>
+              </div>
+              <div class="btn-see">
+                <button>Xem thêm</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 
+    <div class="comment">
+        <h2>Comment</h2>
+    </div> -->
+    <div class="container">
+      <div class="wrapper">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <ul class="carousel">
+          <li class="card">
+            <div class="img">
+              <img
+                src="https://naldzgraphics.net/wp-content/uploads/2011/01/1-Harry-Potter.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <h2>Anna</h2>
+              <span>abc debehf</span>
+            </div>
+          </li>
+          <li class="card">
+            <div class="img">
+              <img
+                src="https://webneel.com/daily/sites/default/files/images/daily/09-2014/11-zuckerberg-caricature-by-mahesh.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <h2>Anna</h2>
+              <span>abc debehf</span>
+            </div>
+          </li>
+          <li class="card">
+            <div class="img">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaTehFFT0c_7X6uRCL_8y4LDEb44Z_pv20-Q&usqp=CAU"
+                alt="img"
+                draggable="false"
+              />
+              <h2>Anna</h2>
+              <span>abc debehf</span>
+            </div>
+          </li>
+          <li class="card">
+            <div class="img">
+              <img
+                src="https://naldzgraphics.net/wp-content/uploads/2011/01/25-Dev-Patel-Caricature.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <h2>Anna</h2>
+              <span>abc debehf</span>
+            </div>
+          </li>
+          <li class="card">
+            <div class="img">
+              <img
+                src="https://webneel.com/daily/sites/default/files/images/daily/09-2014/11-zuckerberg-caricature-by-mahesh.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <h2>Anna</h2>
+              <span>abc debehf</span>
+            </div>
+          </li>
+          <li class="card">
+            <div class="img">
+              <img
+                src="https://naldzgraphics.net/wp-content/uploads/2011/01/25-Dev-Patel-Caricature.jpg"
+                alt="img"
+                draggable="false"
+              />
+              <h2>Anna</h2>
+              <span>abc debehf</span>
+            </div>
+          </li>
+        </ul>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+      </div>
+    </div>
+
+    <div class="question">
+      <div class="question-left">
+        <p>
+          <b>Bạn cần hỗ trợ?</b><br /><span
+            ><i>xin vui lòng để lại yêu cầu ...</i></span
+          >
+        </p>
+        <div class="name1">
+          <input type="text" placeholder="Họ tên ..." />
+        </div>
+        <div class="sdt">
+          <input type="text" placeholder="+(84) *** *** ..." />
+        </div>
+        <div class="email">
+          <input type="text" placeholder="Email ..." />
+        </div>
+        <div class="comment">
+          <input type="text" placeholder="Nội dung ..." />
+        </div>
+        <div class="btn-select">
+          <p><button>Chọn tệp</button> Không có tệp nào được chọn</p>
+        </div>
+        <div class="btn-submit">
+          <button>Gửi yêu cầu</button>
+        </div>
+      </div>
+      <div class="question-right">
+        <img
+          src="https://nhilong.com/wp-content/uploads/2022/01/Home_Interior_Design-Hero-Slider1.jpeg"
+        />
+      </div>
+    </div>
+
+    <script>
+      let slider = document.querySelector(".slider .list");
+      let items = document.querySelectorAll(".slider .list .item");
+      let next = document.getElementById("next");
+      let prev = document.getElementById("prev");
+      let dots = document.querySelectorAll(".slider .dots li");
+
+      let lengthItems = items.length - 1;
+      let active = 0;
+      next.onclick = function () {
+        active = active + 1 <= lengthItems ? active + 1 : 0;
+        reloadSlider();
+      };
+      prev.onclick = function () {
+        active = active - 1 >= 0 ? active - 1 : lengthItems;
+        reloadSlider();
+      };
+      let refreshInterval = setInterval(() => {
+        next.click();
+      }, 3000);
+
+      function reloadSlider() {
+        slider.style.left = -items[active].offsetLeft + "px";
+        //
+        let last_active_dot = document.querySelector(".slider .dots li.active");
+        last_active_dot.classList.remove("active");
+        dots[active].classList.add("active");
+
+        clearInterval(refreshInterval);
+        refreshInterval = setInterval(() => {
+          next.click();
+        }, 3000);
+      }
+
+      dots.forEach((li, key) => {
+        li.addEventListener("click", () => {
+          active = key;
+          reloadSlider();
+        });
+      });
+      window.onresize = function (event) {
+        reloadSlider();
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        window.addEventListener("scroll", function () {
+          var header = document.getElementById("mainHeader");
+          var slider = document.getElementById("slider");
+
+          var sliderHeight = slider.offsetHeight;
+          var windowHeight = window.innerHeight;
+          var scrollPosition = window.scrollY;
+
+          // Kiểm tra khi đã cuộn hết thanh slide lên đầu trang
+          if (scrollPosition > sliderHeight - windowHeight) {
+            header.classList.add("div");
+          } else {
+            header.classList.remove("div");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

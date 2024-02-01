@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sản phẩm</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="icon" type="image/png" th:href="@{images/icons/favicon.ico}" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/home.css" />
+    <script>
+      function findProduct() {
+        let keywordInput = document.querySelector(".input100");
+        let keyword = keywordInput.value;
+        window.location = "/search?keyword=" + keyword;
+      }
+    </script>
+  </head>
+  <style>
+    .row {
+      margin-top: 20px;
+    }
+
+    .col-lg-3 a {
+      font-size: 15px;
+      font-family: sans-serif;
+    }
+
+    /* .container-fluid{
+        {% comment %} border: 1px solid black;
+        width: 100%;
+        height: 200px; {% endcomment %}
+        margin-top: 10px;
+    } */
+
+    .container-fluid h2 {
+      font-size: 40px;
+    }
+
+    .container-fluid th {
+      font-size: 15px;
+      font-family: sans-serif;
+    }
+
+    .table table-striped a {
+      font-size: 15px;
+      font-family: sans-serif;
+    }
+
+    .find {
+      display: flex;
+      margin: 5px;
+    }
+
+    .find input {
+      width: 250px;
+      height: 30px;
+      font-size: 20px;
+    }
+
+    .find button {
+      width: 30px;
+      height: 30px;
+      margin-left: 3px;
+    }
+
+    .container-fluid img {
+      width: 70px;
+      height: 70px;
+    }
+
+    .container-fluid td {
+      font-size: 20px;
+    }
+  </style>
+
+  <body>
+    <section class="page1">
+      <nav class="navbar container">
+        <a href="#"><img src="/static/img/Logoo.png" alt="" /></a>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a th:href="products">Products</a></li>
+          <li><a href="#">About Us</a></li>
+        </ul>
+        <div class="logo">
+          <a href="thongke">Me</a>
+          <a href="#">My Cart</a>
+          <a href="search">Search</a>
+          <a href="login">Logout</a>
+        </div>
+      </nav>
+      <div class="text container">
+        <p>Welcome to</p>
+        <h1>the store</h1>
+        <a href="#" class="btn">learn more</a>
+      </div>
+    </section>
+    <div class="row">
+      <div class="col-lg-3">
+        <a th:href="@{/products/new}" class="btn btn-primary btn-sm mb-3">
+          Add Sản phẩm
+        </a>
+      </div>
+    </div>
+    <form method="get" action="/products">
+      <div class="find">
+        <input
+          class="input100"
+          type="text"
+          name="keyword"
+          placeholder="Nhập thực đơn, đồ ăn cần tìm"
+        />
+        <button class="timkiem" type="submit" onclick="findProduct()">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+    </form>
+
+    <div class="container-fluid">
+      <h2 class="text-center mt-3">Products List</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Hình ảnh</th>
+            <th>Tên sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="product : ${product}">
+            <td th:text="${product.id}"></td>
+            <td><img th:src="${product.image}" /></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.quantity}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+              <a
+                th:href="@{/products/edit/{id}(id=${product.id})}"
+                class="btn btn-primary"
+                ><i class="fa-solid fa-pen-to-square" style="color: #f7f7f8"></i
+              ></a>
+
+              <a
+                th:href="@{/products/{id}(id=${product.id})}"
+                class="btn btn-danger"
+                ><i class="fa-solid fa-trash-can" style="color: #f1f2f4"></i
+              ></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
