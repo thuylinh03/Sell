@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="vi-VN" data-nhanh.vn-template="T0307" class="anyflexbox boxshadow display-table">
+    <head>
+        <meta name="robots" content="noindex" />
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport"> 
+        <meta charset="utf-8"><title>Thanh toán</title>
+        <meta name="DC.language" content="scheme&#x3D;utf-8&#x20;content&#x3D;vi">
+        <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+        <meta name="google-site-verification" content="">
+        <link href="https&#x3A;&#x2F;&#x2F;pos.nvncdn.net&#x2F;16a837-71503&#x2F;store&#x2F;20200325_ZRJHulhsIfpehzWImFaQoMVt.png" rel="icon" type="image&#x2F;vnd.microsoft.icon">
+        <link rel="stylesheet" href="https://web.nvnstatic.net/css/fontAwesome/font-awesome-4.7.0.min.css?v=2" type="text/css">
+        <link rel="stylesheet" href="https://web.nvnstatic.net/css/bootstrap/bootstrap.4.3.1.min.css?v=2" type="text/css">
+        <link rel="stylesheet" href="https://web.nvnstatic.net/js/jquery/fancybox-2.1.5/source/jquery.fancybox.css?v=2" type="text/css">
+        <link rel="stylesheet" href="https://web.nvnstatic.net/css/validationEngine.jquery.css?v=2" type="text/css">
+        <link rel="stylesheet" href="https://web.nvnstatic.net/css/jqueryUI/jqui.css?v=2" type="text/css">
+        <link rel="stylesheet" href="https://web.nvnstatic.net/tp/T0307/css/layoutnull.css?v=35" type="text/css">
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.min.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/bootstrap/bootstrap.4.3.1.min.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.number.min.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/slimscroll.min.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/fancybox-2.1.5/source/jquery.fancybox.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/lib.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery.cookie.js?v=2"></script>
+        <script defer type="text/javascript" src="https://web.nvnstatic.net/js/jquery/jquery-ui-1.10.3.custom.min.js?v=2"></script>
+        <style type="text/css"></style>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                overflow-x: hidden; /* Ngăn chặn hiển thị thanh cuộn ngang nếu có */
+            }
+        </style>
+        
+        <style type="text/css">img {max-width: 100%;} img.lazyload{ opacity: 0.001; object-fit: scale-down !important; } .fb-customerchat>span>iframe.fb_customer_chat_bounce_out_v2 {max-height: 0 !important;}  .fb-customerchat>span>iframe.fb_customer_chat_bounce_in_v2{max-height: calc(100% - 80px) !important;}</style>
+        <link th:href="@{https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css}" rel="stylesheet">
+        <link rel="stylesheet" type="text/css"  th:href="@{/static/css/search.css}">
+        <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css}">
+        <script src="https://pos.nvnstatic.net/cache/location.vn.js?v=231013_172145" defer></script>
+        <script src="https://web.nvnstatic.net/js/lazyLoad/lazysizes.min.js" async></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11">
+        <style>figure.image{clear: both;display: table;margin: .9em auto;min-width: 50px;text-align: center;width: auto !important;}figure.image img {display: block;margin: 0 auto;max-width: 100%;min-width: 100%;}figure.image>figcaption {background-color: #f7f7f7;caption-side: bottom;color: #333;display: table-caption;font-size: .75em;outline-offset: -1px;padding: .6em;word-break: break-word;}figure.image img, img.image_resized {height: auto !important;aspect-ratio: auto !important;}</style>
+        <script src="https://web.nvnstatic.net/js/translate/vi-vn.js" defer></script>
+    </head>
+    <body class="body--custom-background-color">
+        <div style="height: 1000px;">
+            <section class="page1" >
+                <nav class="navbar container">
+                  <ul th:each="login:${login}">
+                    <a th:href="@{/home2/{id}(id=${login.id})}">
+                        <img th:src="@{/static/img/home/ho.png}" alt="" />
+                      </a>  
+                  </ul>  
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="products">Products</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a th:href="@{/login}">Logout</a> </li>
+                    
+                  </ul>
+                  <ul>
+                    <div class="logo" th:each="login:${login}">
+                        <a th:href="@{/canhan/{id}(id=${login.id})}">Me</a>
+                        <a th:href="@{/search2/{id}(id=${login.id})}">Search</a>
+                        <a th:href="@{/gio_hang/{id}(id=${login.id})}">My Cart</a> 
+                        <a th:href="@{/login}">Logout</a> <!-- Thêm đoạn này để dẫn đến trang login -->
+                    </div>
+                </ul>  
+                </nav>
+                <div class="text container">
+                  <p>Welcome to</p>
+                  <h1>EatClean Shop</h1>
+                  <a href="#" class="btn" id="learn-more-btn">learn more</a>
+                </div>
+              </section>
+        </div>
+         
+    <div style="margin-top: 100px;">
+        <button class="order-summary-toggle">
+            <div class="wrap">
+                <h2>
+                    <label class="control-label">
+                        Đơn hàng
+                    </label>
+                    <label class="control-label hidden-small-device">
+                        (1 Sản phẩm)
+                    </label>
+                    <label class="control-label visible-small-device inline">
+                        (1)
+                    </label>
+                </h2>
+                <a class="underline-none expandable pull-right" data-toggle="collapse" data-target=".order-summary--is-collapsed" href="javascript:void(0)">
+                    Xem chi tiết
+                </a>
+            </div>
+
+        </button>
+        <form id="formCheckout" class="validate content stateful-form formCheckout" method="post" th:object="${product}">
+            <div class="wrap">
+                <div class="sidebar">
+                    <div class="sidebar_header">
+                        <h2>
+                            <label class="control-label">
+                                Đơn hàng
+                            </label> 
+                        </h2>
+                        <hr class="full_width">
+                    </div>
+                    <div class="sidebar__content">
+                        <div class="order-summary order-summary--product-list order-summary--is-collapsed collapse" aria-expanded="false">
+                            <div class="summary-body summary-section summary-product">
+                                <div class="summary-product-list">
+                                    <table th:each="product : ${products}" class="product-table">
+                                        <tr class="product product-has-image clearfix">
+                                            <td>
+                                                <div class="product-thumbnail">
+                                                    <div class="product-thumbnail__wrapper"> 
+                                                        <img th:src="@{${product.image}}" alt="img" class="product-thumbnail__image">
+                                                    </div>
+                                                    
+                                                    <p><span th:text="${product.quantity}" class="product-thumbnail__quantity" aria-hidden="true"></span></p>
+                                                </div>
+                                            </td>
+                                            <td class="product-info">
+                                                <span th:text="${product.name}" class="product-info-name"></span>
+                                            </td>
+                                            <td class="product-price text-right">
+                                               <span th:text="${product.price}"></span> 
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="order-summary__scroll-indicator">
+                                        Cuộn chuột để xem thêm
+                                        <i class="fa fa-long-arrow-down" aria-hidden="true">
+
+                                        </i>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="m0">
+                        </div>
+                        <div class="order-summary order-summary--discount">
+                            <div class="summary-section">
+                                <div class="form-group m0">
+                                    <div class="field__input-btn-wrapper">
+                                        <div class="field__input-wrapper"> 
+                                            <input type="text" name="couponCode" id="couponCode" class="form-control discount_code" placeholder="Mã giảm giá" value="">
+                                        </div>
+                                        <button id="getCoupon" class="btn btn-danger event-voucher-apply tp_button" type="button">
+                                            Áp dụng
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="m0">
+                        </div>
+                        <div th:each="product : ${products}" class="order-summary order-summary--total-lines">
+                            <div class="summary-section border-top-none--mobile">
+                                <div class="total-line total-line-subtotal clearfix">
+                                    <span class="total-line-name pull-left">
+                                        Tạm tính                            
+                                    </span>
+                                    <span class="total-line-subprice pull-right" th:text="${product.price}">
+                                                                  
+                                    </span>
+                                </div>
+                                <div class="total-line total-line-shipping clearfix" style="display: flex;">
+                                    <span  style="width: 60%;">
+                                        Số lượng                           
+                                    </span>
+                                    
+                                    <span style="width: 200px;">
+                                        <input id="quantityInput" style="margin-left: 150px; width: 30px; border-color: rgb(185, 184, 184); height: 30px;" class="quantity-input">
+                                    </span>
+                                </div>
+                                <div class="total-line total-line-shipping clearfix">
+                                    <span class="total-line-name pull-left">
+                                        Chiết khấu                            
+                                    </span>
+                                    <span class="pull-right">
+                                        0
+                                    </span>
+                                </div>
+                                <div class="total-line total-line-shipping clearfix">
+                                    <span class="total-line-name pull-left">
+                                        Giảm giá                            
+                                    </span> 
+                                    <span id="moneyCoupon" class="pull-right" value="0">
+                                        0₫
+                                    </span>
+                                </div>
+                                <div class="total-line total-line-shipping clearfix transport-text"> 
+                                    <span class="total-line-name pull-left">
+                                        Phí vận chuyển                                
+                                        <span id="showCarrier">
+                                        </span>
+                                        <style>
+                                        #showCarrier {
+                                        display: block;
+                                        text-align: right;
+                                        width: 100%;
+                                        font-size: 11px;
+                                        clear: both;
+                                        width: 100%;
+                                    }
+    
+                                    .changeOrtherShipFee:hover {
+                                        color: darkred;
+                                        text-decoration: underline;
+                                    }
+                                    </style>
+                                    </span>
+                                    <span id="shipFee" class="total-line-shipping pull-right" value="0">
+                                        0₫
+                                    </span>
+                                </div>
+                                <div class="total-line total-line-total clearfix">
+                                    <span class="total-line-name pull-left">
+                                        Tổng cộng
+                                    </span>
+                                    <span id="totalMoney" class="total-line-price pull-right" value="0">
+                                        0₫
+                                    </span>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="form-group clearfix hidden-sm hidden-xs">
+                        <div class="field__input-btn-wrapper mt10"> 
+                            <a class="previous-link" href="">
+                                <i class="fa fa-angle-left fa-lg" aria-hidden="true">
+                                </i>
+                                <span>
+                                    Quay về giỏ hàng
+                                </span>
+                            </a>
+                            <input id="confirmButton" data-loading-text="Đang xử lý" type="button" value="Xác nhận" style="background-color: green; color: #f7f7f7; width: 100px; height: 30px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main" role="main">
+               
+                <div class="main_content">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="section">
+                                <div class="section__header">
+                                    <div class="layout-flex layout-flex--wrap">
+                                        <h2 class="section__title layout-flex__item layout-flex__item--stretch">
+                                            <i class="fa fa-id-card-o fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true">
+                                            </i>
+                                            <label class="control-label">
+                                                Thông tin khách hàng
+                                            </label>
+                                        </h2>
+                                        <a href="/profile" class="layout-flex__item section__title--link">
+                                            <i class="fa fa-user-circle-o fa-lg" aria-hidden="true">
+                                            </i>
+                                                                                   
+                                        </a>
+                                    </div>
+                                </div>
+                                <div th:each="user : ${user}" class="section__content">
+                                    <in class="billing">
+                                        <div class="form-group">
+                                            <div class="field__input-wrapper">
+                                                <input type="text" name="customerName" id="customerName" required="" class="field__input form-control validate[required]"  placeholder="Họ và tên" th:value="${user.name}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" > 
+                                            <label class="field__input-wrapper">
+                                                <input name="customerEmail" id="customerEmail" type="email" class="field__input form-control   " placeholder="Email" th:value="${user.email}">
+                                                <span class="field__label">
+                                                </span> 
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="field__input-wrapper">
+                                                <input name="customerMobile" id="customerMobile" type="text"
+                                                class="field__input form-control validate[required,custom[phone]]"
+                                                value="" placeholder="Điện thoại">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="field__input-wrapper"> 
+                                                <input name="customerAddress" id="customerAddress" type="text" class="field__input form-control validate[required]" value="" placeholder=" Địa chỉ ">
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="section pt10">
+                                    <div class="section__content">
+                                        <div class="form-group m0">
+                                            <textarea name="description" class="field__input form-control m0" placeholder="Ghi chú">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="section payment-methods p0--desktop">
+                                <div class="section__header">
+                                    <h2 class="section__title"> 
+                                        <i class="fa fa-credit-card fa-lg section__title--icon hidden-md hidden-lg" aria-hidden="true">
+                                        </i> 
+                                        <label class="control-label">
+                                            Thanh toán
+                                        </label>
+                                    </h2>
+
+                                </div>
+                                <div class="section__content">
+                                    <div class="content-box">
+                                        <div class="content-box__row">
+                                            <div class="radio-wrapper">
+                                                <div class="radio__input"> 
+                                                    <input class="input-radio" type="radio" value="1" name="paymentMethod" id="pay_cod" checked="">
+                                                </div> 
+                                                <label class="radio__label" for="pay_cod"> 
+                                                    <span class="radio__label__primary">
+                                                        Thanh toán khi nhận hàng (COD)
+                                                    </span>
+                                                    <span class="radio__label__accessory">
+                                                        <ul>
+                                                            <li class="payment-icon-v2 payment-icon--4"> 
+                                                                <i class="fa fa-money payment-icon-fa" aria-hidden="true">
+                                                                </i>
+                                                            </li>
+                                                        </ul>
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section hidden-md hidden-lg">
+                                <form th:action="@{/dathang}" method="post">
+                                    <!-- Các trường thông tin sản phẩm và người dùng -->
+                                    <input type="hidden" id="userId" name="userId" value="${user.id}">
+                                    <input type="hidden" id="productId" name="productId" value="${product.id}">
+                                    <input type="hidden" id="quantity" name="quantity" >
+                                
+                                    <div class="form-group clearfix m0">
+                                        <input id="orderButton" class="btn btn-primary btn-checkout tp_button" data-loading-text="Đang xử lý"
+                                               type="submit" value="Đặt hàng">
+                                    </div>
+                                </form>
+                                
+                                
+                                
+                                <div class="text-center mt20">
+                                    <a class="previous-link" href="/cart"> 
+                                        <i class="fa fa-angle-left fa-lg" aria-hidden="true">
+                                        </i> 
+                                        <span>
+                                            Quay về giỏ hàng
+                                        </span> 
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="main-ship">
+                    <div id="tableShipFee"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+            
+    </div>
+        <style>
+                #tableShipFee{
+                    display: none;
+                    }
+                </style>
+                    <input type="hidden" class="fanpageId" value="">
+                    <input type="hidden" id="bussinessId" value="71503">
+                    <input type="hidden" value="eNt2fSITgCw7drtTGKUCMVvh2ElFuVViOpN4PVWAFohecWsaM1cF4tgoUMXGwykGaO8JII1Om4Wi7jytxackTvezNruiLxUIWihYrDD4xO5BjIHHprl6EMqyMudNpGxZ4pHl9oRSMMKxm7anXWXrYh6xoWlEfQjYGPIyjmvg5pzIRvX2etBmR9" id="uctk" name="uctk" />
+                    <input type="hidden" id="clienIp" value="1.53.8.223">
+
+                </body>
+
+</body>
+
+                <script>
+                   document.getElementById('confirmButton').addEventListener('click', function () {
+                    // Lấy giá trị số lượng từ trường input
+                    const quantityInput = document.querySelector('.quantity-input');
+                    const quantity = parseInt(quantityInput.value);
+
+                    // Lấy giá trị số lượng gốc từ phần tử hiển thị
+                    const originalQuantity = parseInt(document.querySelector('.product-thumbnail__quantity').innerText);
+
+                    // Kiểm tra điều kiện
+                    if (quantity > originalQuantity || quantity < 1) {
+                        alert('Số lượng không hợp lệ!');
+                        return; // Dừng xử lý nếu có lỗi
+                    }
+
+                    // Lấy giá trị tạm tính từ phần tử hiển thị
+                    const unitPrice = parseFloat(document.querySelector('.total-line-subprice').innerText.replace('₫', '').replace(',', ''));
+
+                    // Tính tổng cộng
+                    const totalPrice = quantity * unitPrice;
+
+                    // Cập nhật giá trị tổng cộng trong phần tử hiển thị
+                    document.getElementById('totalMoney').innerText = totalPrice.toLocaleString() + '₫';
+                });
+
+
+
+                </script>
+                
+            <script>
+                document.getElementById('orderButton').addEventListener('click', function () {
+                    // Lấy giá trị số lượng từ trường input
+                    const quantityInput = document.getElementById('quantityInput');
+                    const quantity = parseInt(quantityInput.value);
+
+                    // Kiểm tra xem giá trị có phải là số hợp lệ không
+                    if (!isNaN(quantity)) {
+                        // Lưu giá trị vào trường ẩn trong form
+                        document.getElementById('quantity').value = quantity;
+                    } else {
+                        // Xử lý khi giá trị không phải là một số hợp lệ
+                        console.error('Invalid quantity value');
+                    }
+                });
+
+
+
+
+                </script>
+                <script th:inline="javascript">
+                    /*<![CDATA[*/ 
+                    document.addEventListener("DOMContentLoaded", function() {
+                        // Kiểm tra xem có thông báo không
+                        var message = /*[[${message}]]*/ '';
+                        
+                        if (message) {
+                            // Hiển thị alert nếu có thông báo
+                            alert(message);
+                        }
+                    });
+                    /*]]>*/
+                </script>
+               
+</html>
