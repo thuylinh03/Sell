@@ -33,6 +33,12 @@
         <style>figure.image{clear: both;display: table;margin: .9em auto;min-width: 50px;text-align: center;width: auto !important;}figure.image img {display: block;margin: 0 auto;max-width: 100%;min-width: 100%;}figure.image>figcaption {background-color: #f7f7f7;caption-side: bottom;color: #333;display: table-caption;font-size: .75em;outline-offset: -1px;padding: .6em;word-break: break-word;}figure.image img, img.image_resized {height: auto !important;aspect-ratio: auto !important;}</style>
         <script src="https://web.nvnstatic.net/js/translate/vi-vn.js" defer></script>
     </head>
+    <style>
+        .logo_footer img{
+            width: 200px;
+            height: 100px;
+        }
+    </style>
     <body id="lama-theme" class="tp_background tp_text_color"> 
         <input type="hidden" id="checkStoreId" value="71503">
         <!-- <div id="content">
@@ -308,7 +314,7 @@
                         <div class="col-md-4 widget_first_childs">
                             <div class="logo_footer">
                                 <a href="/">
-                                    <img src="C:\Users\84973\Downloads\logoPage (1).png" alt="Logo">
+                                    <img th:src="@{/static/img/Logoo.png}" alt=""/>
                                 </a>
                             </div>
                             <div class="contact_footer">

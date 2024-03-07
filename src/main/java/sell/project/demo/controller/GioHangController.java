@@ -36,18 +36,32 @@ public class GioHangController {
     @Autowired
     private CartService cartService;
 
+    @GetMapping("/cart")
+    public String search_products(@RequestParam(name = "keyword", required = false) String keyword, Model model) {
+        List<Products> products = productsFormService.search_products(keyword);
+        model.addAttribute("product", products);
+        model.addAttribute("keyword", keyword != null ? keyword : "");
+        return "cart";
+    }
+
+    @GetMapping("/cart/{loginID}/{productID}")
+    public String ShowGio_hang(@PathVariable int loginID, @PathVariable int productID, Model model) {
+
+        Login login = loginService.getById(loginID);
+        User user = userService.getUserByLoginId(loginID);
+        Products products = searchProService.getById(productID);
+        List<Cart> carts = cartService.geCartsUser(user); // Sửa thành geCartsUser
+        model.addAttribute("login", login);
+        model.addAttribute("user", user);
+        model.addAttribute("products", products);
+        model.addAttribute("carts", carts);
+        return "cart";
+
+    }
+
     // public GioHangController(ProductsFormService productsFormService) {
     // // super();
     // this.productsFormService = productsFormService;
-    // }
-
-    // @GetMapping("/products")
-    // public String search_products(@RequestParam(name = "keyword", required =
-    // false) String keyword, Model model) {
-    // List<Products> products = productsFormService.search_products(keyword);
-    // model.addAttribute("product", products);
-    // model.addAttribute("keyword", keyword != null ? keyword : "");
-    // return "gio_hang";
     // }
 
     // @GetMapping("/gio_hang")
@@ -85,17 +99,5 @@ public class GioHangController {
     // productsFormService.delete(id);
     // return "redirect:/gio_hang";
     // }
-
-    @GetMapping("/gio_hang/{id}")
-    public String ShowGio_hang(@PathVariable int id, Model model) {
-
-        Login login = loginService.getById(id);
-        User user = userService.getUserByLoginId(id);
-        List<Cart> carts = cartService.geCartsUser(user); // Sửa thành geCartsUser
-        model.addAttribute("user", user);
-        model.addAttribute("carts", carts);
-        return "gio_hang";
-
-    }
 
 }

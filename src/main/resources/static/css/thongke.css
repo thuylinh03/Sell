@@ -548,7 +548,7 @@ button:focus {
 }
 
 img {
-    max-width: 100%;
+    max-width: 30%;
 }
 
 .modal-header {
@@ -1052,7 +1052,7 @@ aside.left-panel:hover {
 }
 
 .open aside.left-panel .navbar .navbar-brand.hidden img {
-    max-width: 100%;
+    max-width: 50%;
     margin: 0 auto;
 }
 

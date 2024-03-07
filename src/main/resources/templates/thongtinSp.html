@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/static/css/thongtinSp.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://unpkg.com/boxicons@latest/css/boxicons.min.css}"
+    />
+    <link th:rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link
+      th:rel="preconnect"
+      th:href="@{https://fonts.gstatic.com}"
+      crossorigin
+    />
+    <link
+      th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap}"
+      rel="stylesheet"
+    />
+    <link
+      th:rel="stylesheet"
+      th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css}"
+      crossorigin
+    />
+    <title>Thông tin</title>
+  </head>
+  <style>
+    header {
+      position: fixed;
+      width: 100%;
+      /* Tuỳ chỉnh màu nền của header */
+      z-index: 1000;
+      /* Đặt z-index để đảm bảo header hiển thị trên cùng của các phần tử khác */
+      margin-left: 150px;
+      margin-top: 30px;
+      display: inline-flex;
+      background-color: transparent;
+      transition: background-color 0.3s ease;
+    }
+
+    header .div {
+      background-color: aqua;
+    }
+
+    .logo img {
+      width: 150px;
+      height: 100px;
+    }
+
+    .logo {
+      display: flex;
+    }
+
+    .nav {
+      margin-left: 100px;
+    }
+
+    .nav a {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      color: antiquewhite;
+      justify-content: space-between;
+      padding: 14px 50px;
+      font-family: "Edu TAS Beginner", cursive;
+    }
+  </style>
+  <body>
+    <header id="mainHeader">
+      <div class="logo">
+        <img src="/static/img/Logoo.png" alt="" />
+      </div>
+      <nav class="nav">
+        <a href="home">Home</a>
+        <a href="">About us</a>
+        <a href="products">Product</a>
+        <a href="search">Search</a>
+        <a href="gio_hang">My cart</a>
+        <a href="login">Login</a>
+      </nav>
+    </header>
+
+    <section class="product">
+      <div class="container">
+        <div class="product-top row">
+          <p>Trang chủ</p>
+          <span>&#8594;</span>
+          <p>Sản phẩm</p>
+          <span>&#8594;</span>
+          <p>Tên sản phẩm</p>
+        </div>
+        <div class="product-content row">
+          <div class="product-content-left row">
+            <div class="product-content-left-big-img">
+              <img src="/product-image3.jpg" alt="" />
+            </div>
+            <div class="product-content-left-small-img">
+              <img src="/product-image1.jpg" alt="" />
+              <img src="/product-image2.jpg" alt="" />
+              <img src="/product-image3.jpg" alt="" />
+              <img src="/product-image1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="product-content-right">
+            <div class="product-content-right-product-name">
+              <h1>TÊN SẢN PHẨM</h1>
+              <p>MSP: ZT12-4</p>
+            </div>
+            <div class="product-content-right-product-price">
+              <p>450.000<sup>đ</sup></p>
+            </div>
+            <div class="product-content-right-product-color">
+              <p>
+                <span style="font-weight: bold">Màu sắc</span>:Xanh, Vàng, Cam
+              </p>
+              <div class="product-content-right-product-color-img">
+                <img src="/product-image3.jpg" alt="" />
+              </div>
+            </div>
+            <div class="product-content-right-product-size">
+              <p style="font-weight: bold">KÍCH THƯỚC</p>
+              <div class="size">
+                <span>30x40x70</span>
+                <span>30x40x70</span>
+                <span>30x40x70</span>
+                <span>30x40x70</span>
+              </div>
+            </div>
+            <div class="quantity">
+              <p style="font-weight: bold">Số lượng</p>
+              <input type="number" min="0" value="1" />
+            </div>
+            <div class="product-content-right-product-button">
+              <button>
+                <i class="fas fa-shopping-cart"></i>
+                <p>MUA HÀNG</p>
+              </button>
+            </div>
+            <div class="product-content-right-product-icon">
+              <div class="product-content-right-product-icon-item">
+                <i class="fas fa-phone-alt"></i>
+                <p>Hotline</p>
+              </div>
+              <div class="product-content-right-product-icon-item">
+                <i class="fas fa-comments"></i>
+                <p>Chat</p>
+              </div>
+              <div class="product-content-right-product-icon-item">
+                <i class="fas fa-envelope"></i>
+                <p>Mail</p>
+              </div>
+            </div>
+            <div class="product-content-right-bottom">
+              <div class="product-content-right-bottom-top">
+                <img src="/image-down.png" alt="" />
+              </div>
+              <div class="product-content-right-bottom-content-big">
+                <div class="product-content-right-bottom-content-title row">
+                  <div
+                    class="product-content-right-bottom-content-title-item chitiet"
+                  >
+                    <p>BẢO HÀNH</p>
+                  </div>
+                  <div
+                    class="product-content-right-bottom-content-title-item baoquan"
+                  >
+                    <p>VẬN CHUYỂN</p>
+                  </div>
+                </div>
+                <div class="product-content-right-bottom-content">
+                  <div class="product-content-right-bottom-content-chitiet">
+                    Sau thời gian hết hạn bảo hành, nếu quý khách có bất kỳ yêu
+                    cầu hay thắc mắc thì vui lòng liên hệ với Nhà Xinh để được
+                    hướng dẫn và giải quyết các vấn đề gặp phải.
+                  </div>
+                  <div class="product-content-right-bottom-content-baoquan">
+                    Chi tiết vận chuyển sản phẩm : <br /><br />
+                    GIAO HÀNG TẬN NƠI: cung cấp dịch vụ giao hàng tận nơi, lắp
+                    ráp và sắp xếp vị trí theo đúng ý muốn của quý khách:
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      <div class="footer-container">
+        <p>Tải ứng dụng</p>
+        <div class="app-google">
+          <a href=""><img src="/img/appstore.png" alt="" /></a>
+          <a href=""><img src="/img/googleplay.png" alt="" /></a>
+        </div>
+        <p>Nhận bản tin</p>
+        <div class="input-email">
+          <input type="text" placeholder="Nhập email của bạn" />
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <div class="footer-items">
+          <li>
+            <a href=""><img src="/img/dathongbao.png" alt="" /></a>
+          </li>
+          <li><a href="">Liên hệ</a></li>
+          <li><a href=""></a>Tuyển dụng</li>
+          <li><a href=""></a>Giới thiệu</li>
+          <li>
+            <a href=""><i class="fab fa-facebook-f"></i></a
+            ><a href=""><i class="fab fa-youtube"></i></a>
+          </li>
+        </div>
+        <div class="footer-text">
+          Công ty Cổ phần Dự Kim với số đăng ký kinh doanh: 0105777650 <br />
+          Địa chỉ đăng ký: Tổ dân phố Tháp, P.Đại Mỗ, Q.Nam Từ Liêm, TP.Hà Nội,
+          Việt Nam <br />
+          Số điện thoại: 0243 205 2222/ 090 589 8683 <br />
+        </div>
+        <div class="footer-bottom">©All rights reserved</div>
+      </div>
+    </section>
+    <script>
+      const bigImg = document.querySelector(
+        ".product-content-left-big-img img"
+      );
+      const smallImg = document.querySelectorAll(
+        ".product-content-left-small-img img"
+      );
+      smallImg.forEach(function (imgItem, X) {
+        imgItem.addEventListener("click", function () {
+          bigImg.src = imgItem.src;
+        });
+      });
+      const baoquan = document.querySelector(".baoquan");
+      const chitiet = document.querySelector(".chitiet");
+
+      if (baoquan) {
+        baoquan.addEventListener("click", function () {
+          document.querySelector(
+            ".product-content-right-bottom-content-chitiet"
+          ).style.display = "none";
+          document.querySelector(
+            ".product-content-right-bottom-content-baoquan"
+          ).style.display = "block";
+        });
+      }
+
+      if (chitiet) {
+        chitiet.addEventListener("click", function () {
+          document.querySelector(
+            ".product-content-right-bottom-content-chitiet"
+          ).style.display = "block";
+          document.querySelector(
+            ".product-content-right-bottom-content-baoquan"
+          ).style.display = "none";
+        });
+      }
+      const butTon = document.querySelector(
+        ".product-content-right-bottom-top"
+      );
+      if (butTon) {
+        butTon.addEventListener("click", function () {
+          document
+            .querySelector(".product-content-right-bottom-content-big")
+            .classList.toggle("activeB");
+        });
+      }
+    </script>
+  </body>
+</html>

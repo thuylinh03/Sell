@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Menu</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/static/css/gio_hang.css}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      th:href="@{/static/css/form_chuc_nang.css}"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{https://unpkg.com/boxicons@latest/css/boxicons.min.css}"
+    />
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com}" />
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com}" crossorigin />
+    <link
+      th:href="@{https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap}"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Products</h1>
+    <ul id="product-list"></ul>
+
+    <h2>Add to Cart</h2>
+    <form id="add-to-cart-form">
+      <label for="productId">Product ID:</label>
+      <input type="number" id="productId" name="productId" />
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" name="quantity" />
+      <button type="submit">Add to Cart</button>
+    </form>
+
+    <script>
+      $(document).ready(function () {
+        // Lấy danh sách sản phẩm từ API và hiển thị trên trang
+        $.get("/api/products", function (products) {
+          products.forEach(function (product) {
+            $("#product-list").append(
+              `<li>${product.name} - Price: ${product.price}</li>`
+            );
+          });
+        });
+
+        // Xử lý sự kiện khi người dùng thêm sản phẩm vào giỏ hàng
+        $("#add-to-cart-form").submit(function (event) {
+          event.preventDefault();
+          var userId = 1; // Thay đổi userId tùy theo người dùng đăng nhập
+          var productId = $("#productId").val();
+          var quantity = $("#quantity").val();
+
+          // Gửi yêu cầu thêm sản phẩm vào giỏ hàng đến API
+          $.post(
+            `/api/cart/add?userId=${userId}&productId=${productId}&quantity=${quantity}`,
+            function () {
+              alert("Product added to cart successfully!");
+            }
+          ).fail(function (xhr, textStatus, errorThrown) {
+            alert("Error: " + xhr.responseText);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
