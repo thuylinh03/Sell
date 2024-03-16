@@ -28,61 +28,313 @@
       crossorigin
     />
     <title>Thông tin</title>
+    <script>
+      function findProduct() {
+        let keywordInput = document.querySelector(".input100");
+        let keyword = keywordInput.value;
+        window.location = "/search?keyword=" + keyword;
+      }
+    </script>
   </head>
   <style>
-    header {
-      position: fixed;
-      width: 100%;
-      /* Tuỳ chỉnh màu nền của header */
-      z-index: 1000;
-      /* Đặt z-index để đảm bảo header hiển thị trên cùng của các phần tử khác */
-      margin-left: 150px;
-      margin-top: 30px;
-      display: inline-flex;
-      background-color: transparent;
-      transition: background-color 0.3s ease;
+    .title {
+      margin-top: 70px;
     }
 
-    header .div {
-      background-color: aqua;
-    }
-
-    .logo img {
-      width: 150px;
-      height: 100px;
-    }
-
-    .logo {
-      display: flex;
-    }
-
-    .nav {
-      margin-left: 100px;
-    }
-
-    .nav a {
-      display: inline-block;
+    .title h1 {
+      color: green;
       text-align: center;
+      font-size: 30pt;
+    }
+
+    .title hr {
+      color: green;
+      width: 100px;
+      margin-left: 700px;
+    }
+
+    .ds {
+      max-width: 100%;
+      display: flex;
+      margin-top: 100px;
+      margin-left: 100px;
+      margin-bottom: 100px;
+      /* height: 1000px; */
+      /* border: 1px solid black; */
+    }
+
+    .item {
+      border: 1px solid rgb(16, 180, 16);
+      width: 90%;
+      margin-right: 20px;
+      height: 490px;
+      margin-bottom: 20px;
+    }
+
+    .item h3 {
       text-decoration: none;
-      color: antiquewhite;
+      font-size: 17pt;
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+
+    .min:hover h3 {
+      color: green;
+    }
+
+    .item img {
+      width: 90%;
+      margin-left: 17px;
+    }
+
+    .item p {
+      text-decoration: none;
+      text-align: center;
+      width: 280px;
+      font-size: 13pt;
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .xct {
+      text-decoration: none;
+      font-size: 20pt;
+      margin-left: 30px;
+      /* margin-top: 20px; */
+      color: black;
+      position: sticky;
+    }
+
+    .find {
+      /* border: 1px solid black;  */
+      margin-left: 20px;
+      margin-right: 200px;
+      display: flex;
+      margin-top: 50px;
+    }
+
+    .find input {
+      width: 600px;
+      height: 45px;
+    }
+
+    .find button {
+      width: 45px;
+      height: 45px;
+      background-image: url("https://i.pinimg.com/564x/e9/a2/be/e9a2be0b196f703509b3bbb9b17ef602.jpg");
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+
+    .ds li {
+      list-style-type: none;
+    }
+
+    @import url("https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@1;100;200;300;400;500;600;700;800;900;1000&display=swap");
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Sofia Sans Condensed", sans-serif;
+    }
+
+    :root {
+      font-size: 62.5%;
+    }
+
+    .container {
+      width: 1400px;
+      max-width: 80%;
+      margin: auto;
+    }
+
+    .page1 {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .page1::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://png.pngtree.com/thumb_back/fw800/background/20230715/pngtree-monochromatic-orange-and-yellow-room-interior-with-3d-furnishings-image_3885458.jpg");
+      background-size: cover;
+      filter: blur(5px);
+      z-index: -1;
+    }
+
+    .navbar {
+      display: flex;
       justify-content: space-between;
-      padding: 14px 50px;
-      font-family: "Edu TAS Beginner", cursive;
+      align-items: center;
+      padding: 30px 0;
+      padding: 10px;
+      position: fixed;
+      top: 0;
+      left: 10%;
+      width: 80%;
+      z-index: 999;
+      background-color: rgba(32, 32, 32, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    .navbar a {
+      width: 300px;
+      height: auto;
+    }
+
+    .navbar a img {
+      width: 100px;
+      height: 50px;
+    }
+
+    .navbar ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .navbar ul li a {
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .navbar ul li a::after {
+      content: "";
+      width: 0%;
+      height: 1px;
+      background: #fff;
+      display: block;
+      margin: auto;
+      transition: 0.5s ease-in-out;
+    }
+
+    .navbar ul li a:hover::after {
+      width: 100%;
+      color: red;
+    }
+
+    .logo a {
+      text-decoration: none;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #fff;
+      padding: 0 1.3rem;
+    }
+
+    .text {
+      position: relative;
+      top: 50%;
+      padding: 1rem 0;
+    }
+
+    .text p {
+      text-transform: uppercase;
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #fff;
+    }
+
+    .text h1 {
+      text-transform: uppercase;
+      font-size: 5.5rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    .text .btn {
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 15px 30px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #fff;
+      transition: 0.54s;
+    }
+
+    .text .btn:hover {
+      background: #fff;
+      color: black;
+    }
+
+    .product-content-right-product-name h1 {
+      font-size: 35px;
+    }
+    .product-content-right {
+      margin-left: 10px;
+      width: 520px;
+    }
+
+    .product-content-right-product-price sup {
+      font-size: 30px;
+    }
+
+    .product-top p {
+      font-size: 15px;
+    }
+
+    .product-content-right-product-button a {
+      font-size: 20px;
+      text-decoration: none;
     }
   </style>
   <body>
-    <header id="mainHeader">
-      <div class="logo">
-        <img src="/static/img/Logoo.png" alt="" />
-      </div>
-      <nav class="nav">
-        <a href="home">Home</a>
-        <a href="">About us</a>
-        <a href="products">Product</a>
-        <a href="search">Search</a>
-        <a href="gio_hang">My cart</a>
-        <a href="login">Login</a>
+    <header class="page1">
+      <nav class="navbar container">
+        <a href="#"><img src="static/img/Logoo.png" alt="" /></a>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="products">Products</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="logo">
+          <a href="login">Me</a>
+          <a href="login">My Cart</a>
+          <a href="#">My To-Do-List</a>
+        </div>
       </nav>
+      <div style="display: flex">
+        <div
+          class="text container"
+          style="width: 500px; margin-left: 100px; margin-top: 300px"
+        >
+          <p>Welcome to</p>
+          <h1>the store</h1>
+          <a href="#" class="btn">learn more</a>
+        </div>
+        <div class="find" style="margin-top: 350px">
+          <input
+            class="input100"
+            type="text"
+            name="keyword"
+            placeholder="Nhập sản phẩm tìm kiếm ..."
+            style="font-size: 15pt"
+          />
+          <button
+            class="timkiem"
+            type="button"
+            onclick="findProduct()"
+          ></button>
+        </div>
+      </div>
     </header>
 
     <section class="product">
@@ -97,29 +349,42 @@
         <div class="product-content row">
           <div class="product-content-left row">
             <div class="product-content-left-big-img">
-              <img src="/product-image3.jpg" alt="" />
+              <img img th:src="${product.image}" />
             </div>
             <div class="product-content-left-small-img">
-              <img src="/product-image1.jpg" alt="" />
-              <img src="/product-image2.jpg" alt="" />
-              <img src="/product-image3.jpg" alt="" />
-              <img src="/product-image1.jpg" alt="" />
+              <img
+                src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lntfvpna2cmye7"
+                alt=""
+              />
+              <img
+                src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lntfvpn9wqd674"
+                alt=""
+              />
+              <img
+                src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lntfvpn9zji20c"
+                alt=""
+              />
+              <img
+                src="https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lntfvpna7ywq0d"
+                alt=""
+              />
             </div>
           </div>
           <div class="product-content-right">
             <div class="product-content-right-product-name">
-              <h1>TÊN SẢN PHẨM</h1>
+              <h1 th:text="${product.name}" style="font-size=25px"></h1>
               <p>MSP: ZT12-4</p>
             </div>
             <div class="product-content-right-product-price">
-              <p>450.000<sup>đ</sup></p>
+              <p th:text="${product.price}"><sup>$</sup></p>
             </div>
             <div class="product-content-right-product-color">
               <p>
-                <span style="font-weight: bold">Màu sắc</span>:Xanh, Vàng, Cam
+                <span style="font-weight: bold, font-size: 30px">Màu sắc</span
+                >:Xanh, Vàng, Cam
               </p>
-              <div class="product-content-right-product-color-img">
-                <img src="/product-image3.jpg" alt="" />
+              <div class="product-content-right-product-color-img1">
+                <img img th:src="${product.image}" />
               </div>
             </div>
             <div class="product-content-right-product-size">
@@ -132,13 +397,13 @@
               </div>
             </div>
             <div class="quantity">
-              <p style="font-weight: bold">Số lượng</p>
+              <p style="font-weight: bold">Số lượng: &nbsp&nbsp</p>
               <input type="number" min="0" value="1" />
             </div>
             <div class="product-content-right-product-button">
               <button>
                 <i class="fas fa-shopping-cart"></i>
-                <p>MUA HÀNG</p>
+                <a href="thongtinSp/add/${product.id}">MUA HÀNG</a>
               </button>
             </div>
             <div class="product-content-right-product-icon">

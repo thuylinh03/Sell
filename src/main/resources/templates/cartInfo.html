@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/search.css" />
+    <title>Document</title>
+    <script>
+      function findProduct() {
+        let keywordInput = document.querySelector(".input100");
+        let keyword = keywordInput.value;
+        window.location = "/search?keyword=" + keyword;
+      }
+    </script>
+  </head>
+  <body>
+    <section class="page1">
+      <nav class="navbar container">
+        <a href="#"><img src="static/img/Logoo.png" alt="" /></a>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="products">Products</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <div class="logo">
+          <a href="login">Me</a>
+          <a href="login">My Cart</a>
+          <a href="#">My To-Do-List</a>
+        </div>
+      </nav>
+      <div style="display: flex">
+        <div
+          class="text container"
+          style="width: 500px; margin-left: 100px; margin-top: 300px"
+        >
+          <p>Welcome to</p>
+          <h1>the store</h1>
+          <a href="#" class="btn">learn more</a>
+        </div>
+        <div class="find" style="margin-top: 350px">
+          <input
+            class="input100"
+            type="text"
+            name="keyword"
+            placeholder="Nhập sản phẩm tìm kiếm ..."
+            style="font-size: 15pt"
+          />
+          <button
+            class="timkiem"
+            type="button"
+            onclick="findProduct()"
+          ></button>
+        </div>
+      </div>
+    </section>
+    <div class="cart-box-main">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="table-main table-responsive">
+              <p class="text-center" th:if="${check}">
+                <i class="text-info font-weight-bold text-center"></i> You don't
+                have any items in your cart
+              </p>
+              <table class="table" th:if="${grandTotal}">
+                <thead>
+                  <tr>
+                    <th>Images</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="cart :  ${cart}">
+                    <td class="thumbnail-img">
+                      <a href="#">
+                        <img
+                          class="img-fluid"
+                          th:src="'data:image/jepg;base64,' + ${cart.products.image}"
+                          alt=""
+                        />
+                      </a>
+                    </td>
+                    <td class="name-pr">
+                      <p th:text="${cart.products.name}"></p>
+                    </td>
+                    <td class="price-pr">
+                      <p th:text="'$' + ${cart.products.price}"></p>
+                    </td>
+                    <form th:action="@{/update-cart}" method="post">
+                      <input
+                        type="hidden"
+                        name="id"
+                        th:value="${cart.products.id}"
+                      />
+                      <td class="quantity-box">
+                        <input
+                          type="number"
+                          name="quantity"
+                          th:value="${cart.quantity}"
+                          size="4"
+                          value="1"
+                          min="0"
+                          step="1"
+                          class="c-input-text qty text"
+                        />
+                      </td>
+                      <td class="total-pr">
+                        <p
+                          th:text="'$' + ${cart.products.price * cart.quantity}"
+                        ></p>
+                      </td>
+                      <td>
+                        <button
+                          type="submit"
+                          name="action"
+                          value="update"
+                          title="Update"
+                          class="btn btn-primary"
+                        >
+                          Update
+                        </button>
+                        <button
+                          type="submit"
+                          name="action"
+                          value="delete"
+                          title="Update"
+                          class="btn btn-danger"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </form>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="row my-5" th:if="${grandTotal}">
+          <div class="col-lg-8 col-sm-12"></div>
+          <div class="col-lg-4 col-sm-12">
+            <div class="order-box">
+              <h3>Order summary</h3>
+              <div class="d-flex">
+                <h4>Sub Total</h4>
+                <div class="ml-auto font-weight-bold"></div>
+              </div>
+              <hr class="my-1" />
+              <div class="d-flex">
+                <h4>Tax</h4>
+                <div class="ml-auto font-weight-bold">$2</div>
+              </div>
+              <div class="d-flex">
+                <h4>Shipping Cost</h4>
+                <div class="ml-auto font-weight-bold">Free</div>
+              </div>
+              <hr />
+              <div class="d-flex gr-total">
+                <h5>Grand Total</h5>
+                <div class="ml-auto h5" th:text="'$' + ${grandTotal + 2}"></div>
+              </div>
+              <hr />
+            </div>
+          </div>
+          <div class="col-12 d-flex shopping-box">
+            <a
+              href="checkout.html"
+              th:href="@{/check-out}"
+              class="ml-auto btn hvr-hover"
+              >Checkout</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
